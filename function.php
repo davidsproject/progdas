@@ -35,5 +35,21 @@ function hapus($id){
   return mysqli_affected_rows($koneksi);
 }
 
+function ubah($data){
+  global $koneksi;
+
+  $id = $data['id'];
+  $nama = htmlspecialchars($data["nama"]);
+  $alamat  = htmlspecialchars($data["alamat"]);
+  $jenis_kelamin = htmlspecialchars($data["jenis_kelamin"]);
+  $agama = htmlspecialchars($data["agama"]);
+  $sekolah_asal = htmlspecialchars($data["sekolah_asal"]);
+
+  $query = "UPDATE siswa SET nama = '$nama', alamat = '$alamat', jenis_kelamin = '$jenis_kelamin', agama = '$agama', sekolah_asal = '$sekolah_asal' WHERE id = $id";
+
+  mysqli_query($koneksi, $query);
+
+  return mysqli_affected_rows($koneksi);
+}
 
 ?>
